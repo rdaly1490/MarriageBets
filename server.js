@@ -35,8 +35,8 @@ app.get('/', function(req, res, next) {
 });
 
 app.get('/bets', function(req, res, next) {
-  	Mongoose.model("betModel").find('Rob', function(err, bets) {
-	    if (bets.length > 0) {
+  	Mongoose.model("betModel").find(req.query, function(err, bets) {
+	    if (bets && bets.length > 0) {
 	    	res.send(bets);
 	    } else {
 	    	res.status(500).json({message: "No bets found for this person"});
@@ -46,8 +46,7 @@ app.get('/bets', function(req, res, next) {
 
 app.post('/bets', function(req, res, next) {
 	Mongoose.model("betModel").find({'userName': req.body.userName, 'friendName': req.body.friendName}, function(err, bets) {
-		console.log('bets');
-	    if (bets.length > 0) {
+	    if (bets && bets.length > 0) {
 	    	res.status(500).json({message: "Could not create bet. You've already placed a bet"});
 	    } else {
 			const userName = req.body.userName;

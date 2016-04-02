@@ -11,28 +11,31 @@ $( document ).ready(function() {
 		// TODO: make an isValid function that checks all form data before $.POST
 
 		var vals = $('input');
-		var formData = {}
+		var inputData = {}
 		vals.each(function(index, item) {
 			if (item.type === 'text') {
-				formData[item.id] = $(this).val();
+				inputData[item.id] = $(this).val();
 			}
 		});
-		console.log(formData);
+		var formData = {
+			userName: (inputData.user_first_name + ' ' + inputData.user_last_name).toLowerCase(),
+			friendName: (inputData.friend_first_name + ' ' + inputData.friend_last_name).toLowerCase(),
+			date: inputData.date
+		};
 
-		$.post('http://localhost:3000/bets', {userName: 'Rob', friendName: 'Rob2', date: '1/1/1900'}, function(data) {
+		$.post('/bets', formData, function(data) {
 			console.log('Success, bet placed');
 		})
 		.fail(function(err) {
 			console.log(err.responseJSON.message);
-		})
-		// POST formData
+		});
 	});
 
 	$('#search-form').on('submit', function(e) {
 		e.preventDefault();
-		console.log('searching...');
-		$.get('http://localhost:3000/bets', {userName: 'Rob'}, function(data) {
-			console.log('successful find');
+		var query = $('#search-query').val().toLowerCase();
+		$.get('/bets', {userName: query}, function(data) {
+			console.log('successful find', data);
 		})
 		.fail(function(err) {
 			console.log(err.responseJSON.message);
