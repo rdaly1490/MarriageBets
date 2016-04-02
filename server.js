@@ -35,33 +35,41 @@ app.get('/', function(req, res, next) {
 });
 
 app.get('/bets', function(req, res, next) {
-	console.log('getting bets');
   	Mongoose.model("betModel").find('Rob', function(err, bets) {
-	    console.log(bets);
-	    res.send(bets);
+	    if (bets.length > 0) {
+	    	res.send(bets);
+	    } else {
+	    	res.status(500).json({message: "No bets found for this person"});
+	    }
   	});
 });
 
 app.post('/bets', function(req, res, next) {
-	console.log('posting bet');
-	const userName = req.body.userName;
-	const friendName = req.body.friendName;
-	const date = req.body.date;
-	      
-	const newBet = new bet(); 
-
-	newBet.userName = userName; 
-	newBet.friendName = friendName;
-	newBet.date = date; 
-	    
-	newBet.save(function(err) {
-	    if(!err) {
-	        res.status(201).json({message: "Bet created for: " + newBet.date });   
+	Mongoose.model("betModel").find({'userName': req.body.userName, 'friendName': req.body.friendName}, function(err, bets) {
+		console.log('bets');
+	    if (bets.length > 0) {
+	    	res.status(500).json({message: "Could not create bet. You've already placed a bet"});
 	    } else {
-	        res.status(500).json({message: "Could not create bet. Error: " + err});
-	    }
+			const userName = req.body.userName;
+			const friendName = req.body.friendName;
+			const date = req.body.date;
+			      
+			const newBet = new bet(); 
 
-	});
+			newBet.userName = userName; 
+			newBet.friendName = friendName;
+			newBet.date = date; 
+			    
+			newBet.save(function(err) {
+			    if(!err) {
+			        res.status(201).json({message: "Bet created for: " + newBet.date });   
+			    } else {
+			        res.status(500).json({message: "Could not create bet. Error: " + err});
+			    }
+
+			});
+	    }
+  	});
 });
 
 app.use(express.static(__dirname + '/public'));

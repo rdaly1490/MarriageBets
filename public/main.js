@@ -19,13 +19,24 @@ $( document ).ready(function() {
 		});
 		console.log(formData);
 
-		$.post('http://localhost:3000/bets', {userName: 'Rob', friendName: 'Rob2', date: '1/1/1900'});
+		$.post('http://localhost:3000/bets', {userName: 'Rob', friendName: 'Rob2', date: '1/1/1900'}, function(data) {
+			console.log('Success, bet placed');
+		})
+		.fail(function(err) {
+			console.log(err.responseJSON.message);
+		})
 		// POST formData
 	});
 
 	$('#search-form').on('submit', function(e) {
 		e.preventDefault();
 		console.log('searching...');
+		$.get('http://localhost:3000/bets', {userName: 'Rob'}, function(data) {
+			console.log('successful find');
+		})
+		.fail(function(err) {
+			console.log(err.responseJSON.message);
+		});
 		// make api call and .done => {jQuery.render(<h1>blah</h1>)}
 		// http://code.tutsplus.com/tutorials/quick-tip-an-introduction-to-jquery-templating--net-10535
 	});
