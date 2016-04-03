@@ -79,10 +79,16 @@ $( document ).ready(function() {
 
 	$('#search-form').on('submit', function(e) {
 		e.preventDefault();
+		var searchRows = $('.search-row');
+		if (searchRows.length > 0) {
+			searchRows.each(function(row) {
+				$(this).remove();
+			});
+		}
 		var query = $('#search-query').val().trim().toLowerCase();
 		$.get('/bets', {friendName: query}, function(data) {
 			data.forEach(function(item) {
-				$('#search-results').append('<tr><td>' + item.userName + '</td><td>' + item.friendName + '</td><td>' + item.date + '</td></tr>');
+				$('#search-results').append('<tr class="search-row"><td>' + item.userName + '</td><td>' + item.friendName + '</td><td>' + item.date + '</td></tr>');
 			});
 			console.log('successful find', data);
 		})
