@@ -10,3 +10,11 @@ p {
 	display: block;
 	margin: 0 auto;
 }
+
+#success-submit {
+	font-size: 20px;
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+	margin-top: 10px;
+}

@@ -67,9 +67,11 @@ $( document ).ready(function() {
 			};
 
 			$.post('/bets', formData, function(data) {
+				$('#success-submit').html('Success, bet placed');
 				console.log('Success, bet placed');
 			})
 			.fail(function(err) {
+				$('#success-submit').html(err.responseJSON.message);
 				console.log(err.responseJSON.message);
 			});
 		}
@@ -85,6 +87,7 @@ $( document ).ready(function() {
 			console.log('successful find', data);
 		})
 		.fail(function(err) {
+			$('#success-search').html(err.responseJSON.message);
 			console.log(err.responseJSON.message);
 		});
 	});
