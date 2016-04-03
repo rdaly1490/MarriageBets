@@ -59,12 +59,16 @@ $( document ).ready(function() {
 		});
 
 		if (!inCorrectSubmission) {
-			console.log('submitting...');
 			var formData = {
 				userName: (inputData.user_first_name.trim() + ' ' + inputData.user_last_name.trim()).toLowerCase(),
 				friendName: (inputData.friend_first_name.trim() + ' ' + inputData.friend_last_name.trim()).toLowerCase(),
 				date: inputData.date
 			};
+			vals.each(function(index, item) {
+				if (item.type === 'text') {
+					$(this).val('');
+				}
+			});
 
 			$.post('/bets', formData, function(data) {
 				$('#success-submit').html('Success, bet placed');
