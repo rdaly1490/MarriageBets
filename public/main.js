@@ -66,25 +66,26 @@ $( document ).ready(function() {
 				date: inputData.date
 			};
 
-			// $.post('/bets', formData, function(data) {
-			// 	console.log('Success, bet placed');
-			// })
-			// .fail(function(err) {
-			// 	console.log(err.responseJSON.message);
-			// });
+			$.post('/bets', formData, function(data) {
+				console.log('Success, bet placed');
+			})
+			.fail(function(err) {
+				console.log(err.responseJSON.message);
+			});
 		}
 	});
 
 	$('#search-form').on('submit', function(e) {
 		e.preventDefault();
 		var query = $('#search-query').val().toLowerCase();
-		$.get('/bets', {userName: query}, function(data) {
+		$.get('/bets', {friendName: query}, function(data) {
+			data.forEach(function(item) {
+				$('#search-results').append('<tr><td>' + item.userName + '</td><td>' + item.friendName + '</td><td>' + item.date + '</td></tr>');
+			});
 			console.log('successful find', data);
 		})
 		.fail(function(err) {
 			console.log(err.responseJSON.message);
 		});
-		// make api call and .done => {jQuery.render(<h1>blah</h1>)}
-		// http://code.tutsplus.com/tutorials/quick-tip-an-introduction-to-jquery-templating--net-10535
 	});
 });

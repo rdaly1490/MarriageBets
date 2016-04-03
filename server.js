@@ -35,6 +35,7 @@ app.get('/', function(req, res, next) {
 });
 
 app.get('/bets', function(req, res, next) {
+	console.log(req.query);
   	Mongoose.model("betModel").find(req.query, function(err, bets) {
 	    if (bets && bets.length > 0) {
 	    	res.send(bets);
