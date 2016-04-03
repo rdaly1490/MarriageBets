@@ -1,5 +1,14 @@
 'use strict';
-const config = require('./config/config');
+let config;
+if (process.env.NODE_ENV === 'production') {
+	config = {
+		host: process.env.host || "",
+		dbURI: process.env.dbURI,
+		sessionSecret: process.env.sessionSecret
+	};
+} else {
+	config = require('./config/config');
+}
 const Mongoose = require('mongoose').connect(config.dbURI);
 const express = require('express');
 const bodyParser = require('body-parser');
