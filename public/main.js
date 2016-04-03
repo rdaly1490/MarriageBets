@@ -79,7 +79,7 @@ $( document ).ready(function() {
 
 	$('#search-form').on('submit', function(e) {
 		e.preventDefault();
-		var query = $('#search-query').val().toLowerCase();
+		var query = $('#search-query').val().trim().toLowerCase();
 		$.get('/bets', {friendName: query}, function(data) {
 			data.forEach(function(item) {
 				$('#search-results').append('<tr><td>' + item.userName + '</td><td>' + item.friendName + '</td><td>' + item.date + '</td></tr>');
