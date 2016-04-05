@@ -17,7 +17,7 @@ p {
 	font-weight: bold;
 	text-align: center;
 	display: block;
-	margin: 0 auto;
+	margin-left: 50px;
 }
 
 h5 {
@@ -49,6 +49,7 @@ td {
 .welcome p {
 	color: #795548;
 	font-size: 20px;
+	margin-left: 5px;
 }
 
 .form {
@@ -58,9 +59,10 @@ td {
 	margin-bottom: 50px;
 }
 
-.search-form {
+#search-form {
 	background-color: white;
 	margin-bottom: 0px;
-	padding-top: 20px;
+	padding-top: 15px;
+	padding-bottom: 10px;
 }
 

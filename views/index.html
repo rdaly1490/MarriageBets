@@ -14,7 +14,7 @@
 			<div class=" welcome col s12">
 				<h3>Welcome to Marriage Bets</h3>
 				<p class="welcome">
-				A place for you and friends to bet on when your other buddies are going to get married.  It's easy to do :
+				A place for you and friends to bet on when your other buddies are going to get married.  It's easy to do:
 				</p> 
 				<ul>
 					<li>Just enter your info (name)</li>
@@ -66,30 +66,32 @@
         <p class="col s12" id="success-submit"></p>
 	</form>
 	<h5>Search</h5>
-	<div class="search-form row">
-		<form id="search-form" class="col s12">
-		<div class="input-field col s6">
-			<i class="material-icons prefix">search</i>
-			<input placeholder="First and Last Name" id="search-query" type="text" class="validate">
-			<label for="first_name">Search For Bets</label>
+	<div id="search-form" class="row col s12">
+		<div class="row">
+			<form id="search-form" class="col s12">
+			<div class="input-field col s6">
+				<i class="material-icons prefix">search</i>
+				<input placeholder="First and Last Name" id="search-query" type="text" class="validate">
+				<label for="first_name">Search For Bets</label>
+			</div>
+			<button id="search-btn" class="btn waves-effect waves-light" type="submit" name="action">Search</button>
+			</form>
 		</div>
-		<button id="search-btn" class="btn waves-effect waves-light" type="submit" name="action">Search</button>
-		</form>
-	</div>
-	<p id="success-search"></p>
-	<div class="search-form row">
-		<table>
-			<thead>
-				<tr>
-					<th>Better</th>
-					<th>Friend</th>
-					<th>Date</th>
-				</tr>
-			</thead>
-			<tbody id="search-results">
-				<!-- Template content goes here from search results -->
-			</tbody>
-		</table>
+		<p id="success-search"></p>
+		<div class="row">
+			<table>
+				<thead>
+					<tr>
+						<th>Better</th>
+						<th>Friend</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+				<tbody id="search-results">
+					<!-- Template content goes here from search results -->
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
