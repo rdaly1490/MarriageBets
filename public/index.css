@@ -2,6 +2,11 @@
   width: device-width;
 }
 
+body {
+	background-color: #f6f6f6;
+	color: #795548;
+}
+
 #submit-form {
 	margin-bottom: 70px;
 }
@@ -15,6 +20,19 @@ p {
 	margin: 0 auto;
 }
 
+h5 {
+	margin-bottom: 15px;
+	margin-left: 10px;
+}
+
+th {
+	padding-left: 15px;
+}
+
+td {
+	padding-left: 15px;
+}
+
 #success-submit {
 	font-size: 20px;
 	text-align: center;
@@ -22,3 +40,27 @@ p {
 	margin: 0 auto;
 	margin-top: 10px;
 }
+
+.welcome h3 {
+	text-align: center;
+	color: #26A69A;
+}
+
+.welcome p {
+	color: #795548;
+	font-size: 20px;
+}
+
+.form {
+	background-color: white;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	margin-bottom: 50px;
+}
+
+.search-form {
+	background-color: white;
+	margin-bottom: 0px;
+	padding-top: 20px;
+}
+

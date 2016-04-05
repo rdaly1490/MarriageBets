@@ -10,8 +10,22 @@
 <body>
 <div class="row">
 	<form id="submit-form" class="col s12">
-		<h3>Your Info</h3>
 		<div class="row">
+			<div class=" welcome col s12">
+				<h3>Welcome to Marriage Bets</h3>
+				<p class="welcome">
+				A place for you and friends to bet on when your other buddies are going to get married.  It's easy to do :
+				</p> 
+				<ul>
+					<li>Just enter your info (name)</li>
+					<li> Then  enter your friend's info (name and date you think they'll get married)</li>
+					<li>Then place your bet and you're done!</li>
+					<li>You can always keep tabs on the bets you and your friends make by using the search box below</li>
+				</li>
+			</div>
+		</div>
+		<h5>Your Info</h5>
+		<div class="form row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">account_circle</i>
 				<input id="user_first_name" type="text" class="validate">
@@ -25,8 +39,8 @@
 		  	</div>
 		  	<p id="user_last_name_error"></p>
 		</div>
-		<h3>Your Friend's Info</h3>
-		<div class="row">
+		<h5>Your Friend's Info</h5>
+		<div class="form row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">account_circle</i>
 				<input id="friend_first_name" type="text" class="validate">
@@ -51,8 +65,8 @@
         </div>
         <p class="col s12" id="success-submit"></p>
 	</form>
-	<h3>Search</h3>
-	<div class="row">
+	<h5>Search</h5>
+	<div class="search-form row">
 		<form id="search-form" class="col s12">
 		<div class="input-field col s6">
 			<i class="material-icons prefix">search</i>
@@ -63,7 +77,7 @@
 		</form>
 	</div>
 	<p id="success-search"></p>
-	<div class="row">
+	<div class="search-form row">
 		<table>
 			<thead>
 				<tr>

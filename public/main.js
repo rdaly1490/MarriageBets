@@ -92,7 +92,11 @@ $( document ).ready(function() {
 		var query = $('#search-query').val().trim().toLowerCase();
 		$.get('/bets', {friendName: query}, function(data) {
 			data.forEach(function(item) {
-				$('#search-results').append('<tr class="search-row"><td>' + item.userName + '</td><td>' + item.friendName + '</td><td>' + item.date + '</td></tr>');
+				var splitUserName = item.userName.split(' ');
+				var splitFriendName = item.friendName.split(' ');
+				var userNameCased = splitUserName[0].charAt(0).toUpperCase() + splitUserName[0].slice(1) + ' ' + splitUserName[1].charAt(0).toUpperCase() + splitUserName[1].slice(1);
+				var friendNameCased = splitFriendName[0].charAt(0).toUpperCase() + splitFriendName[0].slice(1) + ' ' + splitFriendName[1].charAt(0).toUpperCase() + splitFriendName[1].slice(1);
+				$('#search-results').append('<tr class="search-row"><td>' + userNameCased + '</td><td>' + friendNameCased + '</td><td>' + item.date + '</td></tr>');
 			});
 			console.log('successful find', data);
 		})
