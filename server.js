@@ -33,7 +33,8 @@ Mongoose.connection.on('error', (error) => {
 const betModel = new Mongoose.Schema({
 	userName: String,
 	friendName: String,
-	date: String
+	date: String,
+	betPlacedOn: String
 });
 
 // Turn schema into a usable model
@@ -44,7 +45,6 @@ app.get('/', function(req, res, next) {
 });
 
 app.get('/bets', function(req, res, next) {
-	console.log(req.query);
   	Mongoose.model("betModel").find(req.query, function(err, bets) {
 	    if (bets && bets.length > 0) {
 	    	res.send(bets);
@@ -62,12 +62,14 @@ app.post('/bets', function(req, res, next) {
 			const userName = req.body.userName;
 			const friendName = req.body.friendName;
 			const date = req.body.date;
+			const betPlacedOn = req.body.betPlacedOn;
 			      
 			const newBet = new bet(); 
 
 			newBet.userName = userName; 
 			newBet.friendName = friendName;
-			newBet.date = date; 
+			newBet.date = date;
+			newBet.betPlacedOn = betPlacedOn;
 			    
 			newBet.save(function(err) {
 			    if(!err) {

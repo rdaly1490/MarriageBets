@@ -66,3 +66,7 @@ td {
 	padding-bottom: 10px;
 }
 
+.search-row-old {
+	text-decoration: line-through;
+}
+
